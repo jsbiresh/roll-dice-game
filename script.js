@@ -103,9 +103,10 @@ btnHold.addEventListener('click', function () {
       scores[activePlayer];
 
     // 2. Check if score >= 100.
-    if (scores[activePlayer] >= 20) {
+    if (scores[activePlayer] >= 5) {
       // Finish the game
       playing = false;
+      diceEl.classList.add('hidden');
       document
         .querySelector(`.player--${activePlayer}`)
         .classList.add('player--winner');
@@ -117,4 +118,22 @@ btnHold.addEventListener('click', function () {
       switchPlayer();
     }
   }
+});
+
+
+btnNew.addEventListener('click', function() {
+  currentScore = 0;
+  scores[0] = 0;
+  scores[1] = 0;
+  current0El.textContent = 0;
+  current1El.textContent = 0;
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  
+  document.querySelector(`.player--${activePlayer}`).classList.remove('player--winner');
+  
+  activePlayer = 0;
+  playing = true;
+  document.querySelector(`.player--${activePlayer}`).classList.add('player--active');
+  
 });
